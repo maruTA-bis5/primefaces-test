@@ -1,26 +1,27 @@
 package org.primefaces.test;
 
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
+
+import org.primefaces.PrimeFaces;
 
 @Named
 @ViewScoped
 public class TestView implements Serializable {
-    
-    private String testString;
-    
-    @PostConstruct  
-    public void init() {
-        testString = "Welcome to PrimeFaces!!!";
+
+    private Byte byteValue;
+
+    public void setByteValue(Byte byteValue) {
+        this.byteValue = byteValue;
     }
 
-    public String getTestString() {
-        return testString;
+    public Byte getByteValue() {
+        return byteValue;
     }
 
-    public void setTestString(String testString) {
-        this.testString = testString;
-    }    
+    public void onSubmit() {
+        PrimeFaces.current().dialog().showMessageDynamic(new FacesMessage("Input: " + getByteValue()));
+    }
 }
