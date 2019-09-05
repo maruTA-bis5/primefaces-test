@@ -2,8 +2,10 @@ package org.primefaces.test;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.PrimeFaces;
 
 @Named
 @ViewScoped
@@ -23,4 +25,8 @@ public class TestView implements Serializable {
     public void setTestString(String testString) {
         this.testString = testString;
     }    
+
+    public void onCommandButtonClick() {
+        PrimeFaces.current().dialog().showMessageDynamic(new FacesMessage("Command Action Successful!"));
+    }
 }
