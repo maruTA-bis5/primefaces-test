@@ -10,7 +10,13 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.testString}</h1>
+        <h1>Scrollable DataTable with Header layout issue</h1>
 
+        <p:dataTable scrollable="true" scrollWidth="500">
+            <f:facet name="header">scrollable &amp; scrollWidth=500</f:facet>
+            <p:column headerText="column1" />
+            <p:column headerText="column2" />
+            <p:column headerText="column3" />
+        </p:dataTable>
     </h:body>
 </html>
