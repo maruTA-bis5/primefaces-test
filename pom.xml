@@ -19,9 +19,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.primefaces</groupId>
+            <!-- from jitpack.io-->
+            <groupId>com.github.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0.RC1</version>
+            <version>0fbe4ee8b1</version>
         </dependency>
 
         <!-- javax.* APIs -->
