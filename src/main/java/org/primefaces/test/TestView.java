@@ -1,6 +1,7 @@
 package org.primefaces.test;
 
 import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -20,17 +21,25 @@ public class TestView implements Serializable {
     @PostConstruct
     void initialize() {
         menuModel.getElements().add(DefaultMenuItem.builder()
+            .icon("pi pi-file")
             .value("Open")
             .build());
+        Submenu otherMenu = DefaultSubMenu.builder()
+            .label("Other")
+            .addElement(DefaultMenuItem.builder()
+                .value("TypeA")
+                .build())
+            .addElement(DefaultMenuItem.builder()
+                .value("TypeB")
+                .build())
+            .build();
         Submenu subMenu = DefaultSubMenu.builder()
             .icon("pi pi-briefcase")
             .label("New")
             .addElement(DefaultMenuItem.builder()
                 .value("Project")
                 .build())
-            .addElement(DefaultMenuItem.builder()
-                .value("Other")
-                .build())
+            .addElement(otherMenu)
             .build();
         menuModel.getElements().add(subMenu);
     }
