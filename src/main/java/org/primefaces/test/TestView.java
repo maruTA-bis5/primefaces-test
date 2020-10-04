@@ -26,13 +26,13 @@ public class TestView {
         this.selection = selection;
     }
 
-    private Set<TestEnum> parameter = new HashSet<>();
+    private Set<String> parameter = new HashSet<>();
 
-    public Set<TestEnum> getParameter() {
+    public Set<String> getParameter() {
         return parameter;
     }
 
-    public void setParameter(Set<TestEnum> parameter) {
+    public void setParameter(Set<String> parameter) {
         this.parameter = parameter;
     }
 
