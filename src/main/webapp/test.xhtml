@@ -3,6 +3,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
@@ -11,10 +12,26 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.testString}</h1>
+        <f:metadata>
+            <f:viewParam name="parameter" value="#{testView.parameter}">
+                <o:converter converterId="omnifaces.ToCollectionConverter" 
+                    itemConverter="omnifaces.GenericEnumConverter" />
+            </f:viewParam>
+        </f:metadata>
+
+        <p:messages>
+            <p:autoUpdate />
+        </p:messages>
+        <h3>Input (selection)</h3>
         <h:form id="frmTest">
-            
+            <h:selectManyCheckbox value="#{testView.selection}">
+                <f:selectItems value="#{testView.selectableItems}" />
+            </h:selectManyCheckbox>
+            <p:commandButton value="Submit" action="#{testView.submit}" />
         </h:form>
+
+        <h3>Output (parameter)</h3>
+        <h:outputText value="#{testView.parameter}" />
 
     </h:body>
 </html>
