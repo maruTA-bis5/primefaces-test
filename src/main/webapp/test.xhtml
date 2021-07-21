@@ -11,9 +11,69 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-            
+            <h2>scrollWidth=600, scrollHeight not set, frozenColumns=1</h2>
+            <p:dataTable scrollable="true"
+                scrollWidth="600"
+                value="#{testView.data}"
+                frozenColumns="1"
+                rowIndexVar="rowIndex"
+                var="row">
+
+                <p:column headerText="No" footerText="No" width="10">#{rowIndex+1}</p:column>
+                <p:column headerText="Id" footerText="Id" width="50">#{row.id}</p:column>
+                <p:column headerText="Brand" footerText="Brand" width="50">#{row.brand}</p:column>
+                <p:column headerText="Year" footerText="Year" width="50">#{row.year}</p:column>
+                <p:column headerText="Color" footerText="Color" width="50">#{row.color}</p:column>
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+
+                <p:columnGroup type="frozenFooter">
+                    <p:row>
+                        <p:column><f:facet name="footer">Count</f:facet></p:column>
+                    </p:row>
+                </p:columnGroup>
+                <p:columnGroup type="scrollableFooter">
+                    <p:row>
+                        <p:column><f:facet name="footer">#{testView.data.size()}</f:facet></p:column>
+                    </p:row>
+                </p:columnGroup>
+            </p:dataTable>
+
+            <h2>scrollWidth=600, scrollHeight=300, frozenColumns=1</h2>
+            <p:dataTable scrollable="true"
+                scrollWidth="600"
+                scrollHeight="300"
+                value="#{testView.data}"
+                frozenColumns="1"
+                rowIndexVar="rowIndex"
+                var="row">
+
+                <p:column headerText="No" footerText="No" width="10">#{rowIndex+1}</p:column>
+                <p:column headerText="Id" footerText="Id" width="50">#{row.id}</p:column>
+                <p:column headerText="Brand" footerText="Brand" width="50">#{row.brand}</p:column>
+                <p:column headerText="Year" footerText="Year" width="50">#{row.year}</p:column>
+                <p:column headerText="Color" footerText="Color" width="50">#{row.color}</p:column>
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+                <p:column headerText="dummy" footerText="dummy" width="50" />
+
+                <p:columnGroup type="frozenFooter">
+                    <p:row>
+                        <p:column><f:facet name="footer">Count</f:facet></p:column>
+                    </p:row>
+                </p:columnGroup>
+                <p:columnGroup type="scrollableFooter">
+                    <p:row>
+                        <p:column><f:facet name="footer">#{testView.data.size()}</f:facet></p:column>
+                    </p:row>
+                </p:columnGroup>
+            </p:dataTable>
         </h:form>
 
     </h:body>
