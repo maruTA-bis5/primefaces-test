@@ -13,7 +13,34 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
+            <p:messages>
+                <p:autoUpdate />
+            </p:messages>
+            <p:treeTable
+                editable="true"
+                var="row"
+                value="#{testView.rootNode}">
             
+                <p:column headerText="title">
+                    #{row.title}
+                </p:column>
+
+                <p:column headerText="note">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            #{row.note}
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText label="note" required="true" value="#{row.note}" />
+                            <p:message display="icon" for="@previous" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column>
+                    <p:rowEditor />
+                </p:column>
+            </p:treeTable>
         </h:form>
 
     </h:body>
