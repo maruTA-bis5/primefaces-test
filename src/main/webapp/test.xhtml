@@ -11,10 +11,24 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
-        <h:form id="frmTest">
-            
+        <h:form id="frmTest1">
+            <h2>validateClient="true"</h2>
+            <p:messages global="true" />
+            <p:inputNumber value="#{testView.decimal}" decimalPlaces="1" converter="halfup">
+                <f:validateLongRange minimum="10" maximum="100" />
+            </p:inputNumber>
+            <p:commandButton validateClient="true" value="Submit"
+                action="#{testView.onSubmit}" process="@form" update="@form" />
         </h:form>
 
+        <h:form id="frmTest2">
+            <h2>validateClient="false"</h2>
+            <p:messages global="true" />
+            <p:inputNumber value="#{testView.decimal}" decimalPlaces="1" converter="halfup">
+                <f:validateLongRange minimum="10" maximum="100" />
+            </p:inputNumber>
+            <p:commandButton validateClient="false" value="Submit"
+                action="#{testView.onSubmit}" process="@form" update="@form" />
+        </h:form>
     </h:body>
 </html>

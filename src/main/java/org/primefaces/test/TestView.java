@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -22,6 +24,10 @@ public class TestView implements Serializable {
     @PostConstruct  
     public void init() {
         string = "Welcome to PrimeFaces!!!";
+    }
+
+    public void onSubmit() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Value: " + decimal));
     }
 
 }
