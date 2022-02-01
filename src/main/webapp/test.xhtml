@@ -11,9 +11,18 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-            
+            <p:dataTable selection="#{testView.selection}"
+                var="row" value="#{testView.data}" rowKey="#{row.uuid}" widgetVar="table">
+
+                <p:column selectionMode="multiple" />
+
+                <p:column headerText="UUID">#{row.uuid}</p:column>
+
+            </p:dataTable>
+            <p:commandButton value="Add new row" process="@this" update="@none"
+
+                action="#{testView.onAddRow}" oncomplete="PF('table').addRow()" />
         </h:form>
 
     </h:body>
