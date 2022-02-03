@@ -11,9 +11,14 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-            
+            <p:barChart widgetVar="chart" model="#{testView.barModel}" style="width: 100%; height: 500px;" />
+
+            <div style="display:flex; justify-content: center;">
+                <p:outputLabel for="@next" value="beginAtZero(Y-axes)" />
+                <p:toggleSwitch value="#{testView.beginAtZero}"/>
+                <p:commandButton value="Refresh" action="#{testView.init}" process="@this @previous" update="@form" />
+            </div>
         </h:form>
 
     </h:body>
