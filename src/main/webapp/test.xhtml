@@ -14,7 +14,32 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-            
+            <p:dataTable id="outerTable"
+                var="row"
+                rowKey="#{row.id}"
+                rowIndexVar="rowIndex"
+                value="#{testView.categories}">
+                <f:facet name="header">
+                    <p:commandButton value="toggle" process="@this" update="@none" />
+                    <p:columnToggler trigger="@previous" datasource="outerTable" />
+                </f:facet>
+                <p:column headerText="1: No">#{rowIndex+1}</p:column>
+                <p:column headerText="2: Toggler" toggleable="false">
+                    <p:rowToggler />
+                </p:column>
+                <p:column headerText="3: Id">#{row.id}</p:column>
+                <p:column headerText="4: Category">#{row.categoryName}</p:column>
+                <p:rowExpansion>
+                    <p:dataTable id="innerTable"
+                        var="childRow"
+                        value="#{row.items}">
+                        <p:column headerText="1: Item">#{childRow.itemName}</p:column>
+                        <p:column headerText="2: Color">#{childRow.color}</p:column>
+                        <p:column headerText="3: Stock">#{childRow.stock}</p:column>
+                        <p:column headerText="4: Empty">#{childRow.stock == 0 ? 'Y' : 'N'}</p:column>
+                    </p:dataTable>
+                </p:rowExpansion>
+            </p:dataTable>
         </h:form>
 
     </h:body>

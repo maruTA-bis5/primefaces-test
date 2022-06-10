@@ -19,10 +19,25 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>11.0.0</version>
+        </dependency> -->
+        <dependency>
+            <groupId>com.github.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>master-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.primefaces.primefaces</groupId>
+                    <artifactId>primefaces-integration-tests</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.primefaces.primefaces</groupId>
+                    <artifactId>primefaces-showcase</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- javax.* APIs -->
