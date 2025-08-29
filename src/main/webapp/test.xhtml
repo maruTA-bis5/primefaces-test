@@ -12,9 +12,12 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.string}</h1>
+        <h1>Focus Datepicker behavior</h1>
         <h:form id="frmTest">
-
+		<p:growl id="msg" showDetail="true" />
+		<p:datePicker mask="true" pattern="yyyy-MM-dd" value="#{testView.date}">
+			<p:ajax event="change" listener="#{testView.onDateChanged}" process="@this" update="msg" />
+		</p:datePicker>
         </h:form>
 
     </h:body>

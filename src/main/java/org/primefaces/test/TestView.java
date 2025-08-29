@@ -1,14 +1,12 @@
 package org.primefaces.test;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.math.BigDecimal;
-import jakarta.annotation.PostConstruct;
+import java.time.LocalDate;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import lombok.Data;
 
@@ -17,21 +15,10 @@ import lombok.Data;
 @ViewScoped
 public class TestView implements Serializable {
 
-    private String string;
-    private Integer integer;
-    private BigDecimal decimal;
-    private LocalDateTime localDateTime;
-    private List<TestObject> list;
+    private LocalDate date;
 
-    @PostConstruct
-    public void init() {
-        string = "Welcome to PrimeFaces!!!";
-        list = new ArrayList<>(Arrays.asList(
-                new TestObject("Thriller", "Michael Jackson", 1982),
-                new TestObject("Back in Black", "AC/DC", 1980),
-                new TestObject("The Bodyguard", "Whitney Houston", 1992),
-                new TestObject("The Dark Side of the Moon", "Pink Floyd", 1973)
-        ));
+    public void onDateChanged(AjaxBehaviorEvent event) {
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date selected", String.valueOf(date)));
     }
-
 }
